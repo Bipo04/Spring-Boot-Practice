@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <style>
+        .product {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .product img {
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+<h1>Product List</h1>
+
+<div>
+    <div th:each="product : ${products}" class="product">
+        <a th:href="@{/products/view/{id}(id=${product.id})}">
+            <img th:src="${product.imageUrl}" th:alt="${product.name}" />
+        </a>
+        <p th:text="${product.name}">Product Name</p>
+    </div>
+</div>
+
+</body>
+</html>
